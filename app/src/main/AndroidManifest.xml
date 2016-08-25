@@ -7,15 +7,10 @@
         android:icon="@mipmap/p1"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-
-    >
-
-
+        android:theme="@style/AppTheme">
         <activity
-
-            android:configChanges="orientation|screenSize|keyboardHidden"
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,6 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Hint_here"
+            android:label="@string/title_activity_hint_here"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Cheat_here"
+            android:label="@string/title_activity_cheat_here"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

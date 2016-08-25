@@ -21,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button yes;
     private Button no;
-    private Button next;
+    private Button next,cheat,hint;
     private TextView ques;
+    Boolean cheated,hinttaken;
 
     int randno;
     private static final String TAG = "MainActivity";
@@ -37,17 +38,46 @@ public class MainActivity extends AppCompatActivity {
     yes = (Button) findViewById(R.id.yes);
     no = (Button) findViewById(R.id.no);
     next = (Button) findViewById(R.id.next);
-
+    cheat=(Button)findViewById(R.id.cheat);
+        hint=(Button)findViewById(R.id.hint);
     final Random r = new Random();
         randno = r.nextInt(1000-0) % 1001;
+        cheated=false;
+        hinttaken=false;
     ques.setText("Is " + randno + " a prime number?");
     yes.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             if (checkprime(randno) == true) {
+                if(cheated==true&&hinttaken==false)
+                {
+                    Toast.makeText(getApplicationContext(), "You have cheated", Toast.LENGTH_SHORT).show();
+                }
+                else if(cheated==false&&hinttaken==true)
+                {
+                    Toast.makeText(getApplicationContext(), "You have taken a hint", Toast.LENGTH_SHORT).show();
+                }
+                else if(cheated==true&&hinttaken==true)
+                {
+                    Toast.makeText(getApplicationContext(), "You have cheated and taken a hint also", Toast.LENGTH_SHORT).show();
+                }
+                else
                 Toast.makeText(getApplicationContext(), "Correct ans", Toast.LENGTH_SHORT).show();
             } else {
+                if(cheated==true&&hinttaken==false)
+                {
+                    Toast.makeText(getApplicationContext(), "You have cheated", Toast.LENGTH_SHORT).show();
+                }
+                else if(cheated==false&&hinttaken==true)
+                {
+                    Toast.makeText(getApplicationContext(), "You have taken a hint", Toast.LENGTH_SHORT).show();
+                }
+                else if(cheated==true&&hinttaken==true)
+                {
+                    Toast.makeText(getApplicationContext(), "You have cheated and taken a hint also", Toast.LENGTH_SHORT).show();
+                }
+                else
                 Toast.makeText(getApplicationContext(), "InCorrect ans", Toast.LENGTH_LONG).show();
             }
         }
@@ -57,8 +87,34 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             if (checkprime(randno) == true) {
+                if(cheated==true&&hinttaken==false)
+                {
+                    Toast.makeText(getApplicationContext(), "You have cheated", Toast.LENGTH_SHORT).show();
+                }
+                else if(cheated==false&&hinttaken==true)
+                {
+                    Toast.makeText(getApplicationContext(), "You have taken a hint", Toast.LENGTH_SHORT).show();
+                }
+                else if(cheated==true&&hinttaken==true)
+                {
+                    Toast.makeText(getApplicationContext(), "You have cheated and taken a hint also", Toast.LENGTH_SHORT).show();
+                }
+                else
                 Toast.makeText(getApplicationContext(), "InCorrect ans", Toast.LENGTH_SHORT).show();
             } else {
+                if(cheated==true&&hinttaken==false)
+                {
+                    Toast.makeText(getApplicationContext(), "You have cheated", Toast.LENGTH_SHORT).show();
+                }
+                else if(cheated==false&&hinttaken==true)
+                {
+                    Toast.makeText(getApplicationContext(), "You have taken a hint", Toast.LENGTH_SHORT).show();
+                }
+                else if(cheated==true&&hinttaken==true)
+                {
+                    Toast.makeText(getApplicationContext(), "You have cheated and taken a hint also", Toast.LENGTH_SHORT).show();
+                }
+                else
                 Toast.makeText(getApplicationContext(), "Correct ans", Toast.LENGTH_SHORT).show();
             }
         }
@@ -67,13 +123,52 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
            // Random r1 = new Random();
+            cheated=false;
+            hinttaken=false;
             randno = r.nextInt(1000-0) % 1001;
             ques.setText("Is " + randno + " a prime number?");
         }
     });
+    hint.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(getApplicationContext(), Hint_here.class);
+
+            startActivityForResult(i,1);
+        }
+    });
+        cheat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Boolean flag=checkprime(randno);
+                Intent i = new Intent(getApplicationContext(), Cheat_here.class);
+                i.putExtra("number",randno);
+                i.putExtra("ans",flag);
+                startActivityForResult(i,1);
+            }
+        });
 
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(cheated!=Boolean.TRUE) {
+            int clicked = data.getIntExtra("clicked", 0);
+            if (clicked == 1) {
+                cheated = true;
 
+            } else
+                cheated = false;
+        }
+        if(hinttaken!=Boolean.TRUE) {
+            int hint_clicked = data.getIntExtra("hint_taken", 0);
+            if (hint_clicked == 1) {
+                hinttaken = true;
+
+            } else
+                hinttaken = false;
+        }
+    }
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);

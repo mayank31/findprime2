@@ -2,4 +2,6 @@
     <string name="app_name">findprime</string>
     <string name="action_settings">Settings</string>
     <string name="question">question</string>
+    <string name="title_activity_hint_here">Hint_here</string>
+    <string name="title_activity_cheat_here">Cheat_here</string>
 </resources>
