@@ -37,7 +37,7 @@ public class Hint_here extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 hint_taken=1;
-                hinttext.setText("Prime Number is a Number which is only divisible and 1 and with the Number itself");
+                hinttext.setText("Prime Number is a Number which is only divisible by 1 and by the Number itself");
             }
         });
 
