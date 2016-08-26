@@ -35,6 +35,10 @@ public class Cheat_here extends AppCompatActivity {
         text_ans.setText("");
         ans=getIntent().getIntExtra("number",0);
         flag=getIntent().getBooleanExtra("ans",true);
+        if(getIntent().getBooleanExtra("cheat_taken",false)==false)
+            clicked=0;
+        else
+            clicked=1;
         text_cheat.setText("Click on Show Ans to view whether "+ans+" is prime number or not");
         cheat_button.setOnClickListener(new View.OnClickListener() {
             @Override

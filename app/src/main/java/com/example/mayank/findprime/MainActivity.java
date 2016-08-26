@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), Hint_here.class);
-
+            i.putExtra("Hint_ans",hinttaken);
             startActivityForResult(i,1);
         }
     });
@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), Cheat_here.class);
                 i.putExtra("number",randno);
                 i.putExtra("ans",flag);
+                i.putExtra("cheat_taken",cheated);
                 startActivityForResult(i,1);
             }
         });

@@ -28,7 +28,10 @@ public class Hint_here extends AppCompatActivity {
         hintcheat=(Button)findViewById(R.id.cheathint);
        // hint_taken=0;
         hinttext.setText("");
-
+        if(getIntent().getBooleanExtra("hint_taken",false)==false)
+            hint_taken=0;
+        else
+            hint_taken=1;
         hintcheat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
