@@ -34,6 +34,7 @@ public class Cheat_here extends AppCompatActivity {
         cheat_button=(Button) findViewById(R.id.cheatbutton);
         text_ans.setText("");
         ans=getIntent().getIntExtra("number",0);
+
         flag=getIntent().getBooleanExtra("ans",true);
         if(getIntent().getBooleanExtra("cheat_taken",false)==false)
             clicked=0;

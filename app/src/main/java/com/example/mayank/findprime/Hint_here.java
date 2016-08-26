@@ -23,6 +23,7 @@ public class Hint_here extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hint_here);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         hinttext=(TextView)findViewById(R.id.hinttext);
         hintcheat=(Button)findViewById(R.id.cheathint);
